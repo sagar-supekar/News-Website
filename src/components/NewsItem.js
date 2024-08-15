@@ -18,7 +18,7 @@ export default class NewsItem extends Component {
             href={readMoreURL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-sm btn-dark"
+            className="btn btn-sm btn-dark" 
           >
             Read more
           </a>
