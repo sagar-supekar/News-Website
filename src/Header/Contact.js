@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { Component } from "react";
+import { Container, Form, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class ContactUs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      message: '',
-      errors: {}
+      name: "",
+      email: "",
+      message: "",
+      errors: {},
     };
   }
 
@@ -21,10 +21,11 @@ class ContactUs extends Component {
   validateForm = () => {
     const { name, email, message } = this.state;
     const errors = {};
-    if (!name) errors.name = 'Name is required.';
-    if (!email) errors.email = 'Email is required.';
-    else if (!/\S+@\S+\.\S+/.test(email)) errors.email = 'Email address is invalid.';
-    if (!message) errors.message = 'Message is required.';
+    if (!name) errors.name = "Name is required.";
+    if (!email) errors.email = "Email is required.";
+    else if (!/\S+@\S+\.\S+/.test(email))
+      errors.email = "Email address is invalid.";
+    if (!message) errors.message = "Message is required.";
 
     this.setState({ errors });
     return Object.keys(errors).length === 0;
@@ -34,7 +35,7 @@ class ContactUs extends Component {
     e.preventDefault();
     if (this.validateForm()) {
       // Handle form submission logic here
-      alert('Form submitted successfully');
+      alert("Form submitted successfully");
     }
   };
 
@@ -42,7 +43,17 @@ class ContactUs extends Component {
     const { name, email, message, errors } = this.state;
 
     return (
-      <Container className=" container  justify-content-center align-items-center my-4" style={{ width: '300px', borderColor:"black",backgroundColor:"#0d093b",color:"white",padding:"20px",borderRadius:"20px" }}>
+      <Container
+        className=" container  justify-content-center align-items-center my-4"
+        style={{
+          width: "300px",
+          borderColor: "black",
+          backgroundColor: "#0d093b",
+          color: "white",
+          padding: "20px",
+          borderRadius: "20px",
+        }}
+      >
         <h2>Contact Us</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formName">

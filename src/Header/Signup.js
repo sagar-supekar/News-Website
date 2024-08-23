@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
 
 export default class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
       errors: {},
     };
   }
@@ -25,57 +24,59 @@ export default class Registration extends Component {
     // Name validation
     if (!name) {
       formIsValid = false;
-      errors['name'] = 'Please enter your name.';
+      errors["name"] = "Please enter your name.";
     }
 
     // Email validation
     if (!email) {
       formIsValid = false;
-      errors['email'] = 'Please enter your email.';
+      errors["email"] = "Please enter your email.";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       formIsValid = false;
-      errors['email'] = 'Email is not valid.';
+      errors["email"] = "Email is not valid.";
     }
 
     // Password validation
     if (!password) {
       formIsValid = false;
-      errors['password'] = 'Please enter your password.';
+      errors["password"] = "Please enter your password.";
     } else if (password.length < 6) {
       formIsValid = false;
-      errors['password'] = 'Password must be at least 6 characters long.';
+      errors["password"] = "Password must be at least 6 characters long.";
     }
 
     // Confirm Password validation
     if (!confirmPassword) {
       formIsValid = false;
-      errors['confirmPassword'] = 'Please confirm your password.';
+      errors["confirmPassword"] = "Please confirm your password.";
     } else if (password !== confirmPassword) {
       formIsValid = false;
-      errors['confirmPassword'] = "Passwords don't match.";
+      errors["confirmPassword"] = "Passwords don't match.";
     }
 
     this.setState({ errors });
     return formIsValid;
   };
 
- 
-
   render() {
     const { name, email, password, confirmPassword, errors } = this.state;
 
     return (
       <div className="container d-flex justify-content-center align-items-center my-4">
-        <div className="card p-4" style={{ width: '350px',backgroundColor:"#0d093b",color:"white"}}>
+        <div
+          className="card p-4"
+          style={{ width: "350px", backgroundColor: "#0d093b", color: "white" }}
+        >
           <h3 className="text-center mb-4">Register</h3>
 
           <form onSubmit={this.handleSubmit} noValidate>
-           
             <div className="mb-3">
-              <label htmlFor="name" className="form-label">Name</label>
+              <label htmlFor="name" className="form-label">
+                Name
+              </label>
               <input
                 type="text"
-                className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                className={`form-control ${errors.name ? "is-invalid" : ""}`}
                 id="name"
                 name="name"
                 value={name}
@@ -83,15 +84,18 @@ export default class Registration extends Component {
                 placeholder="Enter your name"
                 required
               />
-              {errors.name && <div className="invalid-feedback">{errors.name}</div>}
+              {errors.name && (
+                <div className="invalid-feedback">{errors.name}</div>
+              )}
             </div>
 
-           
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">Email</label>
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
               <input
                 type="email"
-                className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                className={`form-control ${errors.email ? "is-invalid" : ""}`}
                 id="email"
                 name="email"
                 value={email}
@@ -99,15 +103,20 @@ export default class Registration extends Component {
                 placeholder="Enter your email"
                 required
               />
-              {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+              {errors.email && (
+                <div className="invalid-feedback">{errors.email}</div>
+              )}
             </div>
 
-            
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">Password</label>
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
               <input
                 type="password"
-                className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                className={`form-control ${
+                  errors.password ? "is-invalid" : ""
+                }`}
                 id="password"
                 name="password"
                 value={password}
@@ -115,15 +124,20 @@ export default class Registration extends Component {
                 placeholder="Enter your password"
                 required
               />
-              {errors.password && <div className="invalid-feedback">{errors.password}</div>}
+              {errors.password && (
+                <div className="invalid-feedback">{errors.password}</div>
+              )}
             </div>
 
-           
             <div className="mb-3">
-              <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
+              <label htmlFor="confirmPassword" className="form-label">
+                Confirm Password
+              </label>
               <input
                 type="password"
-                className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
+                className={`form-control ${
+                  errors.confirmPassword ? "is-invalid" : ""
+                }`}
                 id="confirmPassword"
                 name="confirmPassword"
                 value={confirmPassword}
@@ -131,14 +145,20 @@ export default class Registration extends Component {
                 placeholder="Confirm your password"
                 required
               />
-              {errors.confirmPassword && <div className="invalid-feedback">{errors.confirmPassword}</div>}
+              {errors.confirmPassword && (
+                <div className="invalid-feedback">{errors.confirmPassword}</div>
+              )}
             </div>
 
-            <button type="submit" className="btn btn-primary w-100">Register</button>
+            <button type="submit" className="btn btn-primary w-100">
+              Register
+            </button>
           </form>
 
           <div className="text-center mt-3">
-            <small>By registering, you agree to our terms and conditions.</small>
+            <small>
+              By registering, you agree to our terms and conditions.
+            </small>
           </div>
         </div>
       </div>
