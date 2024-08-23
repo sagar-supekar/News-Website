@@ -14,7 +14,7 @@ export default class Aboutus extends Component {
       >
         <div style={{ maxWidth: "800px", color: "white" }}>
           <div className="mb-4">
-            {/* Optional space for an image or logo */}
+            
            <img src="News-Logo-Template-Download-scaled.jpg" alt="FlashReports Logo" style={{ maxWidth: "50%", height: "auto",borderRadius:"20px" }} /> 
           </div>
           <h1 className="display-4 font-weight-bold mb-4">

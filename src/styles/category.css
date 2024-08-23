@@ -1,0 +1,13 @@
+.sticky-categories {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Make sure it stays above other content */
+    background-color: #f8f9fa; /* Background color to avoid transparency issues */
+    border-bottom: 1px solid #ddd; /* Optional: Adds a bottom border for visual separation */
+  }
+  
+  .sticky-categories .navbar {
+    margin-bottom: 0; /* Remove margin to keep it aligned */
+  }
+  
