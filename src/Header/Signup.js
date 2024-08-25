@@ -12,6 +12,14 @@ export default class Registration extends Component {
     };
   }
 
+  // Save user data to local storage
+  saveUserData = () => {
+    const { name, email, password, confirmPassword } = this.state;
+    let data = { name, email, password, confirmPassword };
+    localStorage.setItem("userData", JSON.stringify(data));
+    alert("Register successfully");
+  }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -57,6 +65,13 @@ export default class Registration extends Component {
     this.setState({ errors });
     return formIsValid;
   };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if (this.validateForm()) {
+      this.saveUserData();
+    }
+  }
 
   render() {
     const { name, email, password, confirmPassword, errors } = this.state;

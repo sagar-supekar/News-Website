@@ -1,24 +1,33 @@
 import React, { Component } from "react";
 import { FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
+
 export default class NewsItem extends Component {
   handleSaveArticle = () => {
-    // Retrieve the existing saved articles from localStorage
-    let savedArticles = JSON.parse(localStorage.getItem("savedArticles")) || [];
+    let savedArticles = JSON.parse(localStorage.getItem("savedArticles"));
+    if (savedArticles === null) {
+      savedArticles = [];
+    }
 
-    // Add the current article to the savedArticles array
     let article = {
       title: this.props.title,
       description: this.props.description,
+      url: this.props.url,
       imageURL: this.props.imageURL,
-      readMoreURL: this.props.readMoreURL,
     };
-    savedArticles.push(article);
 
-    // Save the updated array back to localStorage
-    localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
+    // Check if the article is already saved
+    const isArticleSaved = savedArticles.some(
+      (savedArticle) => savedArticle.title === article.title
+    );
 
-    alert("Article saved successfully!");
+    if (isArticleSaved) {
+      alert("This article is already saved.");
+    } else {
+      savedArticles.push(article);
+      localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
+      alert("Article saved successfully!");
+    }
   };
 
   render() {

@@ -1,8 +1,23 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 
 export default class Signin extends Component {
+  validateUser = () => {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    console.log(email);
+    console.log(password);
+
+    let userData = JSON.parse(localStorage.getItem("userData"));
+
+    if (userData && email === userData.email && password === userData.password) {
+      alert("Sign in successfully");
+    } else {
+      alert("Invalid username or password");
+    }
+  };
+
   render() {
     return (
       <div className="container d-flex justify-content-center align-items-center my-4">
@@ -39,23 +54,26 @@ export default class Signin extends Component {
           </div>
 
           <div className="mb-3">
-            <input type="email" className="form-control" placeholder="Email" />
+            <input type="email" className="form-control" placeholder="Email" id="email"/>
           </div>
 
-          <div className="mb-3">
+          <div className="mb-3"> 
             <input
               type="password"
               className="form-control"
-              placeholder="Password"
+              placeholder="Password" id="password"
             />
           </div>
 
           <div className="mb-3">
-            <button className="btn btn-success btn-block w-100">Sign In</button>
+            <button className="btn btn-success btn-block w-100" onClick={this.validateUser}>Sign In</button>
           </div>
-
-          <div className="mb-3 text-end">
-            <a href="/" className="text-decoration-none">
+          
+          <div className="d-flex justify-content-between mb-3 mx-2">
+            <Link to="/Signup" >
+              New user? Register
+            </Link>
+            <a href="/" >
               Forgot Password?
             </a>
           </div>
